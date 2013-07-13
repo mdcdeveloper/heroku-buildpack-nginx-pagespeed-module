@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# aws_s3_write
+#
 # Write a file to AWS S3 bucket.
 
 require 'aws-sdk'

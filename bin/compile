@@ -19,7 +19,7 @@ VENDORED_NGINX=$(mktemp -d -t nginx.XXXXXX)
 
 # download and upack packages
 echo "-----> Fetching nginx binaries"
-curl $NGINX_PACKAGE -s -o - | tar xzf - -C $VENDORED_NGINX
+../support/s3curl --id=$AWS_ID --key=$AWS_SECRET $NGINX_PACKAGE -s -o - | tar xzf - -C $VENDORED_NGINX
 
 # vendor nginx into the slug
 echo "-----> Vendoring nginx $NGINX_VERSION"

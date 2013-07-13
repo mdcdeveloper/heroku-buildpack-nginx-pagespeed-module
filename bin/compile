@@ -4,7 +4,7 @@
 set -e
 
 # config
-NGINX_VERSION="1.5.3"
+NGINX_VERSION="1.5.2"
 S3_BUCKET=$AWS_S3_BUCKET
 
 # parse and derive params

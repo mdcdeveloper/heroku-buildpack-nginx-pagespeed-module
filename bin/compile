@@ -30,6 +30,10 @@ cp "$VENDORED_NGINX/sbin/nginx" "$BUILD_DIR/bin/nginx"
 cat <<EOF >"$BUILD_DIR/bin/start_nginx"
 #!/usr/bin/env bash
 erb conf/nginx.conf.erb > conf/nginx.conf
-bin/nginx
+mkdir -p logs
+touch logs/access.log logs/error.log
+(tail -qF -n 0 --pid=\$\$ logs/*.log &)
+exec bin/nginx -p .
+exec bin/node app
 EOF
 chmod +x "$BUILD_DIR/bin/start_nginx"

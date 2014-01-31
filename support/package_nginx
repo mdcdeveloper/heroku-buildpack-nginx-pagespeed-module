@@ -19,7 +19,7 @@ pushd $tempdir
 curl http://nginx.org/download/nginx-${nginx_version}.tar.gz -o nginx.tgz
 tar xzf nginx.tgz
 
-curl ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pcre_version}.tar.gz -o pcre.tgz
+curl -L http://downloads.sourceforge.net/pcre/pcre-${pcre_version}.tar.gz -o pcre.tgz
 tar xzf pcre.tgz
 
 # build and package nginx for heroku

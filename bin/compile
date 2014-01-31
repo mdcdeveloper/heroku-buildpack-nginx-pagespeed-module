@@ -12,7 +12,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # nginx package location in github repo
-NGINX_PACKAGE="https://github.com/pirateking/heroku-buildpack-nginx/tree/master/nginx/nginx-${NGINX_VERSION}.tgz"
+NGINX_PACKAGE="https://github.com/pirateking/heroku-buildpack-nginx/raw/master/nginx/nginx-${NGINX_VERSION}.tgz"
 
 # vendor directories
 VENDORED_NGINX=$(mktemp -d -t nginx.XXXXXX)

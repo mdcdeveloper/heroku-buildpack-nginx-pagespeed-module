@@ -49,11 +49,15 @@ To change the vendored binaries for nginx use the helper script in the
 the nginx build options to suit your needs. You'll need an dropbox-enabled
 account to store your binaries in.
 
-For example, you can change the vendored version of nginx to 1.0.12 and google nginx pagespeed extension to 1.9.32.4.
+Before changing binaries be sure you have run the following (in order to be able to compile nginx):
+
+    $ sudo apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip
+
+For example, you can change the vendored version of nginx to 1.0.12 and google nginx pagespeed extension to 1.9.32.4 and release to the folder /home/user/nginx_release.
 
 First you'll need to build a Heroku-compatible version of nginx:
 
-    $ support/pagespeed.sh 1.0.12 1.9.32.4
+    $ support/pagespeed.sh 1.0.12 1.9.32.4 /home/user/nginx_release
 
 The first argument to the package_nginx script is the nginx version. The
 second argument is the version of [ngx_pagespeed](https://github.com/pagespeed/ngx_pagespeed) to compile nginx against.

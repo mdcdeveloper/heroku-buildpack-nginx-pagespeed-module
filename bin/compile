@@ -5,14 +5,11 @@ set -e
 
 # config
 NGINX_VERSION='1.6.2'
-DOWNLOAD_URL='https://www.dropbox.com/s/hrsbmq3lyagymtd/nginx_ps_1.6.2.tgz?dl=1'
+NGINX_PACKAGE='https://www.dropbox.com/s/hrsbmq3lyagymtd/nginx_ps_1.6.2.tgz?dl=1'
 
 # parse and derive params
 BUILD_DIR=$1
 CACHE_DIR=$2
-
-# s3 packages
-NGINX_PACKAGE=DOWNLOAD_URL
 
 # vendor directories
 VENDORED_NGINX=$(mktemp -d -t nginx.XXXXXX)
@@ -24,7 +21,7 @@ curl $NGINX_PACKAGE -L -s -o - | tar xzf - -C $VENDORED_NGINX
 # vendor nginx into the slug
 echo "-----> Vendoring nginx $NGINX_VERSION"
 mkdir -p "$BUILD_DIR/bin"
-cp "$VENDORED_NGINX/nginx_ps_$NGINX_VERSION/sbin/nginx" "$BUILD_DIR/bin/nginx"
+cp "$VENDORED_NGINX/sbin/nginx" "$BUILD_DIR/bin/nginx"
 
 # build a startup script
 cat <<EOF >"$BUILD_DIR/bin/start_nginx"

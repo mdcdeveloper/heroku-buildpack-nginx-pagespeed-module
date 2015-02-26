@@ -32,3 +32,5 @@ cd nginx-${NGINX_VERSION}/
 ./configure --prefix=${RELEASE_FOLDER} --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta
 make
 make install
+cd ${RELEASE_FOLDER}
+tar -czvf nginx_ps_${NGINX_VERSION}.tgz *

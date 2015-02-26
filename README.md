@@ -67,7 +67,7 @@ Than you will need to put tgz version of compiled and made nginx with google pag
 Open `bin/compile` in your editor, and change the following lines:
 
     NGINX_VERSION="1.0.12"
-    DOWNLOAD_URL='https://www.dropbox.com/s/hrsbmq3lyagymtd/nginx_ps_1.6.2.tgz?dl=1' #here should be your own dropbox link for built package
+    NGINX_PACKAGE='https://www.dropbox.com/s/hrsbmq3lyagymtd/nginx_ps_1.6.2.tgz?dl=1' #here should be your own dropbox link for built package
 
 Commit and push the changes to your buildpack to your Github fork, then push
 your sample app to Heroku to test. You should see:

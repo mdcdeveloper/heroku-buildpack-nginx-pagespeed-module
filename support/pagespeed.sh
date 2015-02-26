@@ -34,3 +34,5 @@ make
 make install
 cd ${RELEASE_FOLDER}
 tar -czvf nginx_ps_${NGINX_VERSION}.tgz *
+cd
+echo "Please find your build version at $RELEASE_FOLDER called: nginx_ps_$NGINX_VERSION.tgz"

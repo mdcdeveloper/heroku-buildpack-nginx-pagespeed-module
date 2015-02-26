@@ -46,24 +46,24 @@ create a test app with `--buildpack <your-github-url>` and push to it.
 
 To change the vendored binaries for nginx use the helper script in the
 `support/` subdirectory. You may wish to edit the helper script to modify
-the nginx build options to suit your needs. You'll need an S3-enabled
-AWS account and a bucket to store your binaries in.
+the nginx build options to suit your needs. You'll need an dropbox-enabled
+account to store your binaries in.
 
-For example, you can change the vendored version of nginx to 1.0.12.
+For example, you can change the vendored version of nginx to 1.0.12 and google nginx pagespeed extension to 1.9.32.4.
 
 First you'll need to build a Heroku-compatible version of nginx:
 
-    $  export AWS_ID=xxx AWS_SECRET=yyy S3_BUCKET=zzz
-    $ s3 create $S3_BUCKET
-    $ support/package_nginx 1.0.12 8.30
+    $ support/pagespeed.sh 1.0.12 1.9.32.4
 
 The first argument to the package_nginx script is the nginx version. The
-second argument is the version of PCRE to compile nginx against.
+second argument is the version of [ngx_pagespeed](https://github.com/pagespeed/ngx_pagespeed) to compile nginx against.
+
+Than you will need to put tgz version of compiled and made nginx with google page speed support to any dropbox folder and share link to this file
 
 Open `bin/compile` in your editor, and change the following lines:
 
     NGINX_VERSION="1.0.12"
-    S3_BUCKET=zzz
+    DOWNLOAD_URL='https://www.dropbox.com/s/hrsbmq3lyagymtd/nginx_ps_1.6.2.tgz?dl=1' #here should be your own dropbox link for built package
 
 Commit and push the changes to your buildpack to your Github fork, then push
 your sample app to Heroku to test. You should see:

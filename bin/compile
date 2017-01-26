@@ -5,8 +5,7 @@ set -e
 
 # config
 NGINX_VERSION='1.7.0'
-# NGINX_PACKAGE='https://www.dropbox.com/s/8ev4wkzw7b6ex5z/nginx_ps_1.7.0.tgz?dl=1'
-NGINX_PACKAGE='https://raw.githubusercontent.com/scottmotte/srvdir-binary/master/srvdir.tar.gz'
+NGINX_PACKAGE='https://sanomamdc.com/hinta/nginx-ps-1.6.2.tgz'
 
 # parse and derive params
 BUILD_DIR=$1
@@ -22,7 +21,7 @@ curl $NGINX_PACKAGE -L -s -o - | tar xzf - -C $VENDORED_NGINX
 # vendor nginx into the slug
 echo "-----> Vendoring nginx $NGINX_VERSION"
 mkdir -p "$BUILD_DIR/bin"
-cp "$VENDORED_NGINX/srvdir" "$BUILD_DIR/bin/nginx"
+cp "$VENDORED_NGINX/sbin/nginx" "$BUILD_DIR/bin/nginx"
 
 # build a startup script
 cat <<EOF >"$BUILD_DIR/bin/start_nginx"
